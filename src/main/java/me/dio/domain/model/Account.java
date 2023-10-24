@@ -1,33 +1,28 @@
 package me.dio.domain.model;
 
-import java.math.BigDecimal;
+import jakarta.persistence.*;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import java.math.BigDecimal;
 
 @Entity(name = "tb_account")
 public class Account {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-	
-	@Column(unique = true)
-    private String accountNumber;
-	
-    private String accountAgency;
-    
-    @Column(scale = 2, precision = 13)
-    private BigDecimal accountBalance;
-    
-    @Column(scale = 2, precision = 13)
-    private BigDecimal accountLimit;
 
-    // Getters and setters
-    public long getId() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(unique = true)
+    private String number;
+
+    private String agency;
+
+    @Column(precision = 13, scale = 2)
+    private BigDecimal balance;
+
+    @Column(name = "additional_limit", precision = 13, scale = 2)
+    private BigDecimal limit;
+
+    public Long getId() {
         return id;
     }
 
@@ -35,35 +30,36 @@ public class Account {
         this.id = id;
     }
 
-    public String getAccountNumber() {
-        return accountNumber;
+    public String getNumber() {
+        return number;
     }
 
-    public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
+    public void setNumber(String number) {
+        this.number = number;
     }
 
-    public String getAccountAgency() {
-        return accountAgency;
+    public String getAgency() {
+        return agency;
     }
 
-    public void setAccountAgency(String accountAgency) {
-        this.accountAgency = accountAgency;
+    public void setAgency(String agency) {
+        this.agency = agency;
     }
 
-    public BigDecimal getAccountBalance() {
-        return accountBalance;
+    public BigDecimal getBalance() {
+        return balance;
     }
 
-    public void setAccountBalance(BigDecimal accountBalance) {
-        this.accountBalance = accountBalance;
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
     }
 
-    public BigDecimal getAccountLimit() {
-        return accountLimit;
+    public BigDecimal getLimit() {
+        return limit;
     }
 
-    public void setAccountLimit(BigDecimal accountLimit) {
-        this.accountLimit = accountLimit;
+    public void setLimit(BigDecimal limit) {
+        this.limit = limit;
     }
+
 }
